@@ -1,0 +1,13 @@
+<Project>
+  <ItemGroup Condition="'$(ScaffoldUsesNative)' == 'true'">
+    <Content Include="$(ScaffoldCalcDll)" Link="scaffold-calc.dll" CopyToOutputDirectory="PreserveNewest" Visible="false" />
+    <Content Include="$(ScaffoldTextDll)" Link="scaffold-text.dll" CopyToOutputDirectory="PreserveNewest" Visible="false" />
+  </ItemGroup>
+  <Target Name="BuildScaffoldNative"
+          BeforeTargets="BeforeBuild"
+          Condition="'$(ScaffoldUsesNative)' == 'true' and '$(ScaffoldSkipNative)' != 'true'"
+          Inputs="Cargo.toml;Cargo.lock;crates/*/Cargo.toml;crates/*/build.rs;crates/*/src/**/*.rs"
+          Outputs="$(ScaffoldCalcDll);$(ScaffoldTextDll)">
+    <Exec Command="cargo build --release" WorkingDirectory="$(MSBuildThisFileDirectory)" />
+  </Target>
+</Project>

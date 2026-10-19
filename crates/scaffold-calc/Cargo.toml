@@ -1,0 +1,17 @@
+[package]
+name = "scaffold-calc"
+version.workspace = true
+edition.workspace = true
+
+[lib]
+name = "scaffold_calc"
+crate-type = ["cdylib", "rlib"]
+
+[lints]
+workspace = true
+
+[dependencies]
+scaffold-core = { path = "../scaffold-core" }
+
+[build-dependencies]
+csbindgen = "1.9.8"

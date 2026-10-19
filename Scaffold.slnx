@@ -1,0 +1,9 @@
+<Solution>
+  <Folder Name="/libs/">
+    <Project Path="libs/bindings/Scaffold.Bindings.csproj" />
+  </Folder>
+  <Folder Name="/apps/">
+    <Project Path="apps/winforms/Scaffold.WinForms.csproj" />
+    <Project Path="apps/wpf/Scaffold.Wpf.csproj" />
+  </Folder>
+</Solution>
