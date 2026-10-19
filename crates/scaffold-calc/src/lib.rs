@@ -3,7 +3,7 @@ use std::panic::{AssertUnwindSafe, catch_unwind};
 use std::sync::atomic::{AtomicUsize, Ordering};
 use std::sync::{LazyLock, Mutex};
 
-use scaffold_core::Engine;
+pub use scaffold_math::{Calc, Engine};
 
 pub const OK: i32 = 0;
 pub const ERR_INVALID_HANDLE: i32 = -1;
@@ -33,7 +33,7 @@ pub extern "C" fn scaffold_calc_abi_version() -> i32 {
 
 #[unsafe(no_mangle)]
 pub extern "C" fn scaffold_calc_add(a: i32, b: i32) -> i32 {
-    guard(|| scaffold_core::Calc::add(a, b))
+    guard(|| Calc::add(a, b))
 }
 
 #[unsafe(no_mangle)]

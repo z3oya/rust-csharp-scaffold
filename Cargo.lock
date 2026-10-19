@@ -79,11 +79,11 @@ name = "scaffold-calc"
 version = "0.1.0"
 dependencies = [
  "csbindgen",
- "scaffold-core",
+ "scaffold-math",
 ]
 
 [[package]]
-name = "scaffold-core"
+name = "scaffold-math"
 version = "0.1.0"
 
 [[package]]
@@ -91,7 +91,6 @@ name = "scaffold-text"
 version = "0.1.0"
 dependencies = [
  "csbindgen",
- "scaffold-core",
 ]
 
 [[package]]

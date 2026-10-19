@@ -11,7 +11,6 @@ crate-type = ["cdylib", "rlib"]
 workspace = true
 
 [dependencies]
-scaffold-core = { path = "../scaffold-core" }
 
 [build-dependencies]
 csbindgen = "1.9.8"

@@ -1,5 +1,13 @@
 use std::panic::{AssertUnwindSafe, catch_unwind};
 
+pub struct Greeter;
+
+impl Greeter {
+    pub fn greet(name: &str) -> String {
+        format!("Hello, {name}, from the Rust backend!")
+    }
+}
+
 pub const OK: i32 = 0;
 pub const ERR_INVALID_HANDLE: i32 = -1;
 pub const ERR_BAD_ARGUMENT: i32 = -2;
@@ -52,7 +60,7 @@ pub unsafe extern "C" fn scaffold_text_greet(name: *const u8, name_len: u32) -> 
             unsafe { std::slice::from_raw_parts(name, name_len as usize) }
         };
         let name = std::str::from_utf8(bytes).ok()?;
-        let text = scaffold_core::Greeter::greet(name);
+        let text = Greeter::greet(name);
         let buffer = ByteBuffer::from_vec(text.into_bytes());
         Some(Box::into_raw(Box::new(buffer)))
     };
@@ -70,5 +78,15 @@ pub unsafe extern "C" fn scaffold_text_free_byte_buffer(buffer: *mut ByteBuffer)
     unsafe {
         let boxed = Box::from_raw(buffer);
         drop(boxed.destroy_into_vec());
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn greet_works() {
+        assert_eq!(Greeter::greet("Ada"), "Hello, Ada, from the Rust backend!");
     }
 }

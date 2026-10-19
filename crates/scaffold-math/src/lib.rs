@@ -6,14 +6,6 @@ impl Calc {
     }
 }
 
-pub struct Greeter;
-
-impl Greeter {
-    pub fn greet(name: &str) -> String {
-        format!("Hello, {name}, from the Rust backend!")
-    }
-}
-
 pub struct Engine {
     factor: i32,
     acc: i64,
@@ -48,11 +40,6 @@ mod tests {
     fn add_works() {
         assert_eq!(Calc::add(2, 3), 5);
         assert_eq!(Calc::add(-1, 1), 0);
-    }
-
-    #[test]
-    fn greet_works() {
-        assert_eq!(Greeter::greet("Ada"), "Hello, Ada, from the Rust backend!");
     }
 
     #[test]
