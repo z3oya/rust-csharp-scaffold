@@ -32,3 +32,8 @@ rustc-ice-*.txt
 # ZCode
 .zcode/
 
+# package
+package/publish/
+package/portable/
+package/dist/
+
